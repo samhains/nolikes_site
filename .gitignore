@@ -4,3 +4,5 @@ nolikes/.nolikes.py.swp
 nolikes/__init__.pyc
 nolikes/__pycache__/
 nolikes/nolikes.pyc
+*.pyc
+.DS_Store

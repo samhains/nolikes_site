@@ -33,7 +33,7 @@ class Image(db.Model):
         self.caption = caption
 
     def __repr__(self):
-        return '<Image %r>' % self.uuid
+        return '<Image uuid={} url={} caption={}>'.format(self.uuid, self.url, self.caption)
 # @app.route('/')
 # def show_image():
     # db = get_db()

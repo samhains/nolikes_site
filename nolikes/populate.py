@@ -4,7 +4,6 @@ from caption_fix import fix_caption
 import json
 
 IMG_DIR = '~/data/images/'
-
 image_json = json.load(open('vis.json'))
 
 Image.query.delete()
@@ -15,7 +14,10 @@ for data in image_json:
     uuid = data['file_name'].split('/')[-1].split('.')[0]
     fname = IMG_DIR+data['file_name'].split('/')[-1]
     caption = fix_caption(data['caption'])
-    image = Image(uuid, fname, caption)
+    count = Image.query.filter_by(caption=caption).count()
+    print(caption)
+    print(count)
+    image = Image(uuid, fname, caption, count)
     i = i+1
     print('saving image id:', i)
     db.session.add(image)

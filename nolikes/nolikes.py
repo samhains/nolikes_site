@@ -23,17 +23,19 @@ app.config.from_envvar('NOLIKES_SETTINGS', silent=True)
 
 class Image(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    uuid = db.Column(db.String(80), unique=True)
-    url = db.Column(db.String(120), unique=True)
-    caption = db.Column(db.String(480))
+    uuid = db.Column(db.String(80), unique=True, nullable=False)
+    url = db.Column(db.String(120), unique=True, nullable=False)
+    number = db.Column(db.Integer, nullable=False)
+    caption = db.Column(db.String(480), nullable=False)
 
-    def __init__(self, uuid, url, caption):
+    def __init__(self, uuid, url, caption, number):
         self.uuid = uuid
         self.url = url
         self.caption = caption
+        self.number = number
 
     def __repr__(self):
-        return '<Image uuid={} url={} caption={}>'.format(self.uuid, self.url, self.caption)
+        return '<Image uuid={} url={} caption={} number={}>'.format(self.uuid, self.url, self.caption, self.number)
 # @app.route('/')
 # def show_image():
     # db = get_db()

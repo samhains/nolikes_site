@@ -1,0 +1,3 @@
+graft nolikes/templates
+graft nolikes/static
+include nolikes/schema.sql

@@ -22,5 +22,8 @@ def fix_caption(str):
                         else:
                             string = string + w.string+' '
 
-    return string[:1].upper() + string[1:-1]
+    string = string[:1].upper() + string[1:-1]
+    if string.endswith('.'):
+      string = string[:-1]
+    return string
 

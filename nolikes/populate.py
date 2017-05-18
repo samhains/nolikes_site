@@ -10,10 +10,11 @@ Image.query.delete()
 db.session.commit()
 
 i = 0
-for data in image_json:
-    uuid = data['file_name'].split('/')[-1].split('.')[0]
-    fname = IMG_DIR+data['file_name'].split('/')[-1]
-    caption = fix_caption(data['caption'])
+for filename, caption in image_json.items():
+    print(filename, caption)
+    uuid = filename.split('.')[0]
+    fname = IMG_DIR+filename
+    caption = fix_caption(caption)
     count = Image.query.filter_by(caption=caption).count()
     print(caption)
     print(count)

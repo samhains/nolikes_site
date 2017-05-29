@@ -6,6 +6,7 @@ import json
 IMG_DIR = '~/data/images/'
 image_json = json.load(open('vis.json'))
 
+print(image_json)
 Image.query.delete()
 db.session.commit()
 
@@ -18,8 +19,8 @@ for filename, caption in image_json.items():
     count = Image.query.filter_by(caption=caption).count()
     print(caption)
     print(count)
-    image = Image(uuid, fname, caption, count)
-    i = i+1
+    image = Image(uuid, fname, 'v1_dcgan', None, caption, count)
+    i = i + 1
     print('saving image id:', i)
     db.session.add(image)
     try:

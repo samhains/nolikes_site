@@ -23,6 +23,8 @@ def fix_caption(str):
                             string = string + w.string+' '
 
     string = string[:1].upper() + string[1:-1]
+    if string.startswith('A'):
+      string = string[2].upper() + string[3:]
     if string.endswith('.'):
       string = string[:-1]
     return string
